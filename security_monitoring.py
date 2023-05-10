@@ -1,6 +1,8 @@
-import discord
-from picamera import PiCamera
 from time import sleep
+from picamera import PiCamera
+import discord
+print("Hello, this is my project!")
+
 
 intents = discord.Intents.default()
 intents.members = True
@@ -12,6 +14,7 @@ client = discord.Client(intents=intents)
 async def on_ready():
     print('Logged in as {0.user}'.format(client))
 
+
 @client.event
 async def on_message(message):
     if message.content.startswith('!snimi'):
@@ -22,4 +25,4 @@ async def on_message(message):
         camera.stop_preview()
         await message.channel.send(file=discord.File('/home/pi/Desktop/slika.jpg'))
 
-client.run('your_bot_token')
+client.run('16779446')
