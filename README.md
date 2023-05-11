@@ -1,2 +1,4 @@
 # SecuritySystem
-IOT-BASED RASPBERRY PI 4 SECURITY MONITORING SYSTEM USING PYTHON PROGRAMMING LANGUAGE
+IoT based Raspberry Pi 4 Security Moitoring System using Python Programming Language
+
+Keys: #raspberrypi #security #monitoring #system #python #iot
