@@ -16,6 +16,12 @@ print("Hello, this is my project!")
 # učitavanje varijable okruženja iz .env datoteke
 load_dotenv()
 
+# dohvaćanje varijable okruženja
+DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
+if DISCORD_TOKEN is None:
+    print("GREŠKA: DISCORD_TOKEN nije pronađen u .env file")
+    exit(1)
+
 # postavljanje GPIO pinova za senzor pokreta
 GPIO.setmode(GPIO.BCM)
 PIR_PIN = 7
@@ -33,6 +39,7 @@ intents.members = True  # ova linija koda dopusta botu da prima clanove dogadjaj
 bot = commands.Bot(command_prefix='!', intents=intents)
 DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
 CHANNEL_ID = os.getenv('CHANNEL_ID')
+
 
 # funkcija za detekciju pokreta
 
