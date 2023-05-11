@@ -37,7 +37,7 @@ CHANNEL_ID = os.getenv('CHANNEL_ID')
 # funkcija za detekciju pokreta
 
 
-def MOTION(PIR_PIN):
+async def MOTION(PIR_PIN):
     print("Otkriveno kretanje!")
 
     # snimanje slike sa kamerom
@@ -48,6 +48,18 @@ def MOTION(PIR_PIN):
     channel = bot.get_channel(int(CHANNEL_ID))
     with open(filename, 'rb') as fp:
         picture = discord.File(fp, filename=filename)
-        message = "Otkriveno kretanje, provjeri privitak!"
+        message = "Otkriveno kretanje, provjeri snimljeni sadržaj!"
         await channel.send(message, file=picture)
     os.remove(filename)
+
+
+GPIO.add_event_detect(PIR_PIN, GPIO.RISING, callback=MOTION)
+
+# pokretanje Discord klijenta
+
+
+@bot.event
+async def on_ready():
+    print('Prijavljen korisnik {0.user}'.format(bot))
+
+bot.run(DISCORD_TOKEN)
