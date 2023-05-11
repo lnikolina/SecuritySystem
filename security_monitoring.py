@@ -15,7 +15,7 @@ print("Hello, this is my security project!")
 
 
 # učitavanje varijable okruženja iz .env datoteke
-load_dotenv()
+# load_dotenv()
 
 # dohvaćanje varijable okruženja
 DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
@@ -29,14 +29,12 @@ PIR_PIN = 7
 GPIO.setup(PIR_PIN, GPIO.IN)
 
 # postavljanje kamere - trenutna greška u kodu s obziom na faleći ribbon kabel za kameru
-camera = picamera.PiCamera()
-camera.resolution = (640, 480)
-
-camera.start_preview()
-time.sleep(5)  # pregled na 5 sekundi
-camera.stop_preview()
-
-camera.capture('image.jpg')
+# camera = picamera.PiCamera()
+# camera.resolution = (640, 480)
+# camera.start_preview()
+# time.sleep(5)  # pregled na 5 sekundi
+# camera.stop_preview()
+# camera.capture('image.jpg')
 
 
 # postavljanje discord klijenta
