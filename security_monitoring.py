@@ -1,37 +1,25 @@
-from email.mime.image import MIMEImage
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-import smtplib
+# import smtplib
 import time
-import RPi.GPIO as GPIO
-import numpy as np
-import cv2
+import RPi.GPIO as GPIO  # biblioteka za ulaz i izlaz GPIO pinova
+# import numpy as np
+# import cv2
 import discord
-from picamera import PiCamera
-
+# from picamera import PiCamera
+import picamera
+import os
+from dotenv import load_dotenv
+from discord.ext import commands
 
 print("Hello, this is my project!")
 
+# učitavanje varijable okruženja iz .env datoteke
+load_dotenv()
 
-intents = discord.Intents.default()
-intents.members = True
+# postavljanje GPIO pinova za senzor pokreta
+GPIO.setmode(GPIO.BCM)
+PIR_PIN = 7
+GPIO.setup(PIR_PIN, GPIO.IN)
 
-client = discord.Client(intents=intents)
-
-
-@client.event
-async def on_ready():
-    print('Logged in as {0.user}'.format(client))
-
-
-@client.event
-async def on_message(message):
-    if message.content.startswith('!snimi'):
-        camera = PiCamera()
-        camera.start_preview()
-        sleep(5)
-        camera.capture('/home/pi/Desktop/slika.jpg')
-        camera.stop_preview()
-        await message.channel.send(file=discord.File('/home/pi/Desktop/slika.jpg'))
-
-client.run('16779446')
+# postavljanje kamere
+camera = picamera.PiCamera()
+camera.resolution = (640, 480)
