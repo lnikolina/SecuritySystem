@@ -13,8 +13,6 @@ from dotenv import load_dotenv
 
 print("Hello, this is my project!")
 
-git add .gitignore
-git commit -m "Added .env to .gitignore"
 
 # učitavanje varijable okruženja iz .env datoteke
 load_dotenv()
