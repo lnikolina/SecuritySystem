@@ -11,7 +11,7 @@ from discord.ext import commands
 from discord import Intents
 from dotenv import load_dotenv
 
-print("Hello, this is my project!")
+print("Hello, this is my security project!")
 
 
 # učitavanje varijable okruženja iz .env datoteke
@@ -25,7 +25,7 @@ if DISCORD_TOKEN is None:
 
 # postavljanje GPIO pinova za senzor pokreta
 GPIO.setmode(GPIO.BCM)
-PIR_PIN = 70016134871
+PIR_PIN = 7
 GPIO.setup(PIR_PIN, GPIO.IN)
 
 # postavljanje kamere - trenutna greška u kodu s obziom na faleći ribbon kabel za kameru
