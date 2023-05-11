@@ -4,12 +4,12 @@ import RPi.GPIO as GPIO  # biblioteka za ulaz i izlaz GPIO pinova
 # import numpy as np
 # import cv2
 import discord
-from picamera import PiCamera
+# from picamera import PiCamera
 import picamera
 import os
-from dotenv import load_dotenv
 from discord.ext import commands
 from discord import Intents
+from dotenv import load_dotenv
 
 print("Hello, this is my project!")
 
@@ -24,18 +24,25 @@ if DISCORD_TOKEN is None:
 
 # postavljanje GPIO pinova za senzor pokreta
 GPIO.setmode(GPIO.BCM)
-PIR_PIN = 7
+PIR_PIN = 70016134871
 GPIO.setup(PIR_PIN, GPIO.IN)
 
 # postavljanje kamere - trenutna greška u kodu s obziom na faleći ribbon kabel za kameru
-# camera = picamera.PiCamera()
-# camera.resolution = (640, 480)
+camera = picamera.PiCamera()
+camera.resolution = (640, 480)
+
+camera.start_preview()
+time.sleep(5)  # pregled na 5 sekundi
+camera.stop_preview()
+
+camera.capture('image.jpg')
 
 
 # postavljanje discord klijenta
 intents = Intents.default()  # postavljanje zadanog skupa namjeri
 intents.members = True  # ova linija koda dopusta botu da prima clanove dogadjaja
 
+load_dotenv()
 bot = commands.Bot(command_prefix='!', intents=intents)
 DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
 CHANNEL_ID = os.getenv('CHANNEL_ID')
