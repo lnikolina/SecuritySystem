@@ -1,6 +1,15 @@
-from time import sleep
-from picamera import PiCamera
+from email.mime.image import MIMEImage
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+import smtplib
+import time
+import RPi.GPIO as GPIO
+import numpy as np
+import cv2
 import discord
+from picamera import PiCamera
+
+
 print("Hello, this is my project!")
 
 
